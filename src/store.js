@@ -1,11 +1,23 @@
-import { applyMiddleware, compose, createStore } from 'redux'
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
-import data from './data'
+/* static redux data source */
+// import data from './data'
+
+/* dinamic redux data source */
+import { productListReducer } from './reducers/productReducers'
 
 const initialState = {}
-const reducer = (state, action) => {
-     return { products: data.products }
-}
+
+/* static data redux */
+// const reducer = (state, action) => {
+//      return { products: data.products }
+// }
+
+/* dinamic data redux */
+const reducer = combineReducers({
+     productList: productListReducer
+})
+
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
