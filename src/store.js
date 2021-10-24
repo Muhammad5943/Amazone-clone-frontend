@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 // import data from './data'
 
 /* dinamic redux data source */
-import { productListReducer } from './reducers/productReducers'
+import { productDetailsReducer, productListReducer } from './reducers/productReducers'
 
 const initialState = {}
 
@@ -15,7 +15,8 @@ const initialState = {}
 
 /* dinamic data redux */
 const reducer = combineReducers({
-     productList: productListReducer
+     productList: productListReducer,
+     productDetails: productDetailsReducer
 })
 
 
