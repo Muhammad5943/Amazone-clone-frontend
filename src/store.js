@@ -1,12 +1,21 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
+import { cartReducer  } from './reducers/cartReducers'
 /* static redux data source */
 // import data from './data'
 
 /* dinamic redux data source */
 import { productDetailsReducer, productListReducer } from './reducers/productReducers'
 
-const initialState = {}
+const initialState = {
+     cart: {
+          cartItems: localStorage.getItem('cartItems')
+               ? JSON.parse(localStorage.getItem('cartItems'))
+               : [],
+     }
+}
+
+console.log("localStorage ", localStorage.getItem('cartItems'));
 
 /* static data redux */
 // const reducer = (state, action) => {
@@ -16,9 +25,9 @@ const initialState = {}
 /* dinamic data redux */
 const reducer = combineReducers({
      productList: productListReducer,
-     productDetails: productDetailsReducer
+     productDetails: productDetailsReducer,
+     cart: cartReducer
 })
-
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(

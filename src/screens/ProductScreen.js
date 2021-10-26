@@ -19,6 +19,7 @@ function ProductScreen(props) {
      /* dinamic data from redux */
      const dispatch = useDispatch()
      const productId = props.match.params._id
+     console.log('productid ', productId);
      const [qty, setQty] = useState(1)
      const productDetails = useSelector(state => state.productDetails)
      const { loading, error, product } = productDetails
