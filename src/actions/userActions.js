@@ -24,6 +24,7 @@ export const register = (name, email, password) => async (dispatch) => {
                email,
                password
           })
+          console.log('data ', data);
 
           dispatch({
                type: USER_REGISTER_SUCCESS,
@@ -48,7 +49,7 @@ export const register = (name, email, password) => async (dispatch) => {
 
 export const signin = (email, password) => async (dispatch) => {
      dispatch({
-          type: USER_SIGNIN_SUCCESS,
+          type: USER_SIGNIN_REQUEST,
           payload: {
                email,
                password
@@ -58,7 +59,7 @@ export const signin = (email, password) => async (dispatch) => {
      try {
           const { data } = await Axios.post('/api/users/signin', { email, password })
           dispatch({
-               type: USER_SIGNIN_REQUEST,
+               type: USER_SIGNIN_SUCCESS,
                payload: data
           })
 
@@ -77,5 +78,8 @@ export const signin = (email, password) => async (dispatch) => {
 export const signout = () => (dispatch) => {
      localStorage.removeItem('userInfo')
      localStorage.removeItem('cartItems')
-     dispatch({ type: USER_SIGNOUT })
+     localStorage.removeItem('shippingAddress')
+     dispatch({ 
+          type: USER_SIGNOUT 
+     })
 }
