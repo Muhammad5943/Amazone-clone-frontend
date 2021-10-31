@@ -1,7 +1,11 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { createOrder } from '../actions/orderActions'
 import CheckoutSteps from '../components/CheckoutSteps'
+import LoadingBox from '../components/LoadingBox'
+import MessageBox from '../components/MessageBox'
+import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 
 function PlaceOrderScreen(props) {
      const cart = useSelector((state) => state.cart)
@@ -9,6 +13,8 @@ function PlaceOrderScreen(props) {
           props.history.push('/payment')
      }
 
+     const orderCreate = useSelector((state) => state.orderCreate)
+     const { loading, success, error, order } = orderCreate
      const toPrice = (num) => Number(num.toFixed(2))
      cart.itemsPrice = toPrice(
           cart.cartItems.reduce((a,c) => a + c.qty * c.price, 0)
@@ -16,12 +22,22 @@ function PlaceOrderScreen(props) {
      cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10)
      cart.taxPrice = toPrice(0.15 * cart.itemsPrice)
      cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice
-
-     // console.log('cart ', cart.cartItems);
+     const dispatch = useDispatch()
 
      const placeOrderHandler = () => {
-
+               dispatch(createOrder({ 
+                    ...cart, 
+                    orderItems: cart.cartItems 
+               })
+          )
      }
+
+     useEffect(() => {
+          if (success) {
+               props.history.push(`/order/${order._id}`);
+               dispatch({ type: ORDER_CREATE_RESET });
+          }
+     }, [dispatch, order, props.history, success]);
      
      return (
           <div>
@@ -123,6 +139,8 @@ function PlaceOrderScreen(props) {
                         Place Order
                       </button>
                     </li>
+                    {loading && <LoadingBox></LoadingBox>}
+                    {error && <MessageBox variant="danger">{error}</MessageBox>}
                   </ul>
                 </div>
               </div>

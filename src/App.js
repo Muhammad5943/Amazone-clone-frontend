@@ -9,6 +9,7 @@ import SigninScreen from './screens/SigninScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ShippingAddressScreen from './screens/ShippingAddressScreen'
 import PaymentMethodScreen from './screens/PaymentMethodScreen'
+import OrderScreen from './components/OrderScreen'
 import './index.css'
 
 function App() {
@@ -64,6 +65,7 @@ function App() {
           <Route path="/payment" component={ PaymentMethodScreen }></Route>
           <Route path="/placeholder" component={ PaymentMethodScreen }></Route>
           <Route path="/product/:_id" component={ ProductScreen }></Route>
+          <Route path="/order/:id" component={ OrderScreen }></Route>
           <Route path="/cart/:_id?" component={ CartScreen }></Route>         
         </main>
         <footer className="row center">All right reserved</footer>

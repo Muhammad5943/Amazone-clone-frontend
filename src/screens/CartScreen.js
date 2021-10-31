@@ -6,13 +6,14 @@ import MessageBox from '../components/MessageBox';
 
 export default function CartScreen(props) {
      const productId = props.match.params._id
-     console.log('productId ', productId);
+     // console.log('productId ', productId);
      const qty = props.location.search 
                     ? Number(props.location.search.split('=')[1]) 
                     : 1
                     // console.log('qty ', qty);
      const cart = useSelector((state) => state.cart)
      const { cartItems } = cart
+     // console.log(cartItems);
      const dispatch = useDispatch()
      useEffect(() => {
           if (productId) {
@@ -40,7 +41,7 @@ export default function CartScreen(props) {
                     ) : (
                          <ul>
                               {cartItems.map((item) => (
-                                   <li key={item._id}>
+                                   <li key={item.product}>
                                         <div className="row">
                                              <div>
                                                   <img
