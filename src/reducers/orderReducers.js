@@ -33,8 +33,7 @@ export const orderCreateReducer = (
 
 export const orderDetailsReducer = (
      state = { 
-          loading: true, 
-          order: {} 
+          loading: true
      },
      action
 ) => {
