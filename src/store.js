@@ -9,8 +9,10 @@ import { cartReducer  } from './reducers/cartReducers'
 import { 
      orderCreateReducer, 
      orderDetailsReducer, 
+     orderMineListReducer, 
      orderPayReducer
 } from './reducers/orderReducers'
+
 /* static redux data source */
 // import data from './data'
 
@@ -58,7 +60,8 @@ const reducer = combineReducers({
      userRegister: userRegisterReducer,
      orderCreate: orderCreateReducer,
      orderDetails: orderDetailsReducer,
-     orderPay: orderPayReducer
+     orderPay: orderPayReducer,
+     orderMineList: orderMineListReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
