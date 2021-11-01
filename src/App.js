@@ -46,7 +46,7 @@ function App() {
                 </Link>
                 <ul className="dropdown-content">
                   <li>
-                    <Link to="#signout" onClick={signoutHandler}>
+                    <Link to="/signin" onClick={signoutHandler}>
                       Sign Out
                     </Link>
                   </li>
