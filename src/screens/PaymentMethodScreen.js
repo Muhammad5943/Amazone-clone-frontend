@@ -6,6 +6,7 @@ import CheckoutSteps from '../components/CheckoutSteps'
 function PaymentMethodScreen(props) {
      const cart = useSelector((state) => state.cart)
      const { shippingAddress } = cart
+     console.log('shippingAddress ', shippingAddress);
      if (!shippingAddress.address) {
           props.history.push('/shopping')
      }
@@ -27,34 +28,34 @@ function PaymentMethodScreen(props) {
                     <div>
                          <div>
                          <input
-                         type="radio"
-                         id="paypal"
-                         value="PayPal"
-                         name="paymentMethod"
-                         required
-                         checked
-                         onChange={(e) => setPaymentMethod(e.target.value)}
+                              type="radio"
+                              id="paypal"
+                              value="PayPal"
+                              name="paymentMethod"
+                              required
+                              checked
+                              onChange={(e) => setPaymentMethod(e.target.value)}
                          ></input>
                          <label htmlFor="paypal">PayPal</label>
                          </div>
                     </div>
                     <div>
                          <div>
-                         <input
-                         type="radio"
-                         id="stripe"
-                         value="Stripe"
-                         name="paymentMethod"
-                         required
-                         onChange={(e) => setPaymentMethod(e.target.value)}
-                         ></input>
+                              <input
+                                   type="radio"
+                                   id="stripe"
+                                   value="Stripe"
+                                   name="paymentMethod"
+                                   required
+                                   onChange={(e) => setPaymentMethod(e.target.value)}
+                              ></input>
                          <label htmlFor="stripe">Stripe</label>
                          </div>
                     </div>
                     <div>
                          <label />
                          <button className="primary" type="submit">
-                         Continue
+                              Continue
                          </button>
                     </div>
                </form>
