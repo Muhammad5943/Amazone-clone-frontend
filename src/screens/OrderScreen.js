@@ -1,4 +1,4 @@
-import { Axios } from 'axios'
+import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { PayPalButton } from 'react-paypal-button-v2'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,8 +9,12 @@ import MessageBox from '../components/MessageBox'
 import { ORDER_PAY_RESET } from '../constants/orderConstants'
 
 function OrderScreen(props) {
-     const orderId = props.match.params.id
-     const [sdkReady, setSdkReady] = useState(false)
+     const orderId = props.match.params._id
+     /* for prod */
+     // const [sdkReady, setSdkReady] = useState(false)
+     /* for dev */
+     const [sdkReady, setSdkReady] = useState(true)
+     // console.log('sdkReady ', sdkReady)
      const orderDetails = useSelector((state) => state.orderDetails)
      const { order, loading, error } = orderDetails
 
@@ -25,6 +29,7 @@ function OrderScreen(props) {
      useEffect(() => {
           const addPayPalScript = async () => {
                const { data } = await Axios.get('/api/config/paypal')
+               // console.log('data ', data);
                const script = document.createElement('script')
                script.type = 'text/javascript'
                script.src = `https://www.paypal.com/sdk/js?client-id=${data}`

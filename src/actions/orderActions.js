@@ -31,7 +31,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
                }
           })
 
-          console.log('data ', data);
+          // console.log('data ', data);
 
           dispatch({
                type: ORDER_CREATE_SUCCESS,
@@ -69,7 +69,7 @@ export const detailsOrder = (orderId) => async (dispatch, getState) => {
                     Authorization: `Bearer ${userInfo.token}`
                }
           })
-          console.log('data ', data);
+          // console.log('data ', data)
 
           dispatch({
                type: ORDER_DETAILS_SUCCESS,
