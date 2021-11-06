@@ -6,9 +6,9 @@ import MessageBox from '../components/MessageBox'
 
 function OrderHistoryScreen(props) {
      const orderMineList = useSelector((state) => state.orderMineList)
-     console.log('orderMineList ', orderMineList);
+     // console.log('orderMineList ', orderMineList);
      const { loading, error, orders } = orderMineList
-     console.log('orders ', orders);
+     // console.log('orders ', orders);
      const dispatch = useDispatch()
      useEffect(() => {
           dispatch(listOrderMine())
@@ -22,7 +22,7 @@ function OrderHistoryScreen(props) {
                ) : error ? (
                     <MessageBox variant="danger">{error}</MessageBox>
                ) : (
-                    <table className="table">
+                    <table className="table table-striped">
                          <thead>
                               <tr>
                                    <th>ID</th>
@@ -34,7 +34,7 @@ function OrderHistoryScreen(props) {
                               </tr>
                          </thead>
                          <tbody>
-                              {/* {orders.map((order) => (
+                              {orders.map((order) => (
                                    <tr key={order._id}>
                                         <td>{order._id}</td>
                                         <td>{order.createdAt.substring(0, 10)}</td>
@@ -58,7 +58,7 @@ function OrderHistoryScreen(props) {
                                              </button>
                                         </td>
                                    </tr>
-                              ))} */}
+                              ))}
                          </tbody>
                     </table>
                )}

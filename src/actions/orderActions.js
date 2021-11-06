@@ -135,23 +135,23 @@ export const listOrderMine = () => async (dispatch, getState) => {
      } = getState()
 
      try {
-          console.log('userInfo ', userInfo);
+          // console.log('userInfo ', userInfo);
           const { data } = await Axios.get('/api/orders/mine', {
                headers: {
                     Authorization: `Bearer ${userInfo.token}`
                }
           })
 
-          console.log('data ', data);
+          // console.log('data ', data);
 
           dispatch({
                type: ORDER_MINE_LIST_SUCCESS,
-               payload: data
+               payload: data.orders
           })
 
           // console.log('payload', payload);
      } catch (error) {
-          console.log('inside');
+          // console.log('inside');
           const message = error.response && error.response.data.message
                ? error.response.data.message
                : error.message;
