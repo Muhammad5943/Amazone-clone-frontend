@@ -13,8 +13,10 @@ import PaymentMethodScreen from './screens/PaymentMethodScreen'
 import OrderScreen from './screens/OrderScreen'
 import OrderHistoryScreen from './screens/OrderHistoryScreen'
 import PlaceOrderScreen from './screens/PlaceOrderScreen'
-import './index.css'
 import ProfileScreen from './screens/ProfileScreen'
+import AdminRoute from './components/AdminRoute'
+import ProductListScreen from './screens/ProductListScreen'
+import './index.css'
 
 function App() {
   const cart = useSelector(state => state.cart)
@@ -68,10 +70,35 @@ function App() {
                 <Link to="/register">Sign Up</Link>
               </>
             )}
+            {userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <Link to="#admin">
+                  Admin <i className="fa fa-caret-down"></i>
+                </Link>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/dashboard">Dashboard</Link>
+                  </li>
+                  <li>
+                    <Link to="/productlist">Products</Link>
+                  </li>
+                  <li>
+                    <Link to="/orderlist">Orders</Link>
+                  </li>
+                  <li>
+                    <Link to="/userlist">Users</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </header>
         <main>
           <Route path="/" component={ HomeScreen } exact></Route>
+          <AdminRoute
+            path="/productlist"
+            component={ ProductListScreen }
+          ></AdminRoute>
           <PrivateRoute
             path="/profile"
             component={ProfileScreen}
