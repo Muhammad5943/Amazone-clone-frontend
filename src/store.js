@@ -18,6 +18,7 @@ import {
 
 /* dinamic redux data source */
 import { 
+     productCreateReducer,
      productDetailsReducer, 
      productListReducer 
 } from './reducers/productReducers'
@@ -65,7 +66,8 @@ const reducer = combineReducers({
      orderPay: orderPayReducer,
      orderMineList: orderMineListReducer,
      userDetails: userDetailsReducer,
-     userUpdateProfile: userUpdateProfileReducer
+     userUpdateProfile: userUpdateProfileReducer,
+     productCreate: productCreateReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
