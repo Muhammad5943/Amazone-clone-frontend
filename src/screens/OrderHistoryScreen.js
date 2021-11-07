@@ -34,7 +34,7 @@ function OrderHistoryScreen(props) {
                               </tr>
                          </thead>
                          <tbody>
-                              {orders.map((order) => (
+                              {orders ? orders.map((order) => (
                                    <tr key={order._id}>
                                         <td>{order._id}</td>
                                         <td>{order.createdAt.substring(0, 10)}</td>
@@ -58,7 +58,26 @@ function OrderHistoryScreen(props) {
                                              </button>
                                         </td>
                                    </tr>
-                              ))}
+                              )) : (
+                                   <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                             
+                                        </td>
+                                        <td>
+                                             <button
+                                                  type="button"
+                                                  className="small"
+                                                  
+                                             >
+                                                  Details
+                                             </button>
+                                        </td>
+                                   </tr>
+                              )}
                          </tbody>
                     </table>
                )}
