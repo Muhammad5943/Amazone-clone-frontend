@@ -19,8 +19,10 @@ import {
 /* dinamic redux data source */
 import { 
      productCreateReducer,
+     productDeleteReducer,
      productDetailsReducer, 
-     productListReducer 
+     productListReducer, 
+     productUpdateReducer
 } from './reducers/productReducers'
 import { 
      userDetailsReducer,
@@ -67,7 +69,9 @@ const reducer = combineReducers({
      orderMineList: orderMineListReducer,
      userDetails: userDetailsReducer,
      userUpdateProfile: userUpdateProfileReducer,
-     productCreate: productCreateReducer
+     productCreate: productCreateReducer,
+     productUpdate: productUpdateReducer,
+     productDelete: productDeleteReducer
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
