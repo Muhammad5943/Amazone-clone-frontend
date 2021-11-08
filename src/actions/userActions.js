@@ -110,6 +110,7 @@ export const detailsUser = (userId) => async (dispatch, getState) => {
                userInfo 
           },
      } = getState()
+     
      try {
           const { data } = await Axios.get(`/api/users/${userId}`, {
                headers: { 
