@@ -19,6 +19,7 @@ import ProductListScreen from './screens/ProductListScreen'
 import './index.css'
 import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
+import UserListScreen from './screens/UserListScreen'
 
 function App() {
   const cart = useSelector(state => state.cart)
@@ -96,19 +97,30 @@ function App() {
           </div>
         </header>
         <main>
-          <Route path="/" component={ HomeScreen } exact></Route>
+          <Route 
+            path="/" 
+            component={ HomeScreen } 
+            exact
+          ></Route>
+          
           <AdminRoute
             path="/orderlist"
             component={OrderListScreen}
+          ></AdminRoute>
+          <AdminRoute 
+            path="/userlist" 
+            component={UserListScreen}
           ></AdminRoute>
           <AdminRoute
             path="/productlist"
             component={ ProductListScreen }
           ></AdminRoute>
+          
           <PrivateRoute
             path="/profile"
             component={ProfileScreen}
           ></PrivateRoute>
+          
           <Route path="/signin" component={ SigninScreen }></Route>
           <Route path="/register" component={ RegisterScreen }></Route>
           <Route path="/shipping" component={ ShippingAddressScreen }></Route>
