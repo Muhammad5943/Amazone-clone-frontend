@@ -17,14 +17,14 @@ import {
      PRODUCT_UPDATE_SUCCESS
 } from "../constants/productConstants"
 
-export const listProducts = () => async (dispatch) => {
+export const listProducts = ({ seller = '' }) => async (dispatch) => {
      dispatch({
           type: PRODUCT_LIST_REQUEST
      })
 
      try {
-          const { data } = await Axios.get('/api/products')
-          // console.log('data ', data);
+          const { data } = await Axios.get(`/api/products?seller=${seller}`)
+          console.log('data ', data.products)
           dispatch({ 
                type: PRODUCT_LIST_SUCCESS, 
                payload: data.products

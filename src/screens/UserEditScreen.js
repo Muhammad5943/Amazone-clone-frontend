@@ -93,7 +93,8 @@ export default function UserEditScreen(props) {
                               <input
                                    id="isSeller"
                                    type="checkbox"
-                                   checked={isSeller}
+                                   checked={user.isSeller}
+                                   // value={isSeller}
                                    onChange={(e) => setIsSeller(e.target.checked)}
                               ></input>
                          </div>

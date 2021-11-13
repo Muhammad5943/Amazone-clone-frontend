@@ -21,6 +21,8 @@ import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
 import UserListScreen from './screens/UserListScreen'
 import UserEditScreen from './screens/UserEditScreen'
+import SellerRoute from './components/SellerRoute'
+import SellerScreen from './screens/SellerScreen'
 
 function App() {
   const cart = useSelector(state => state.cart)
@@ -74,27 +76,43 @@ function App() {
                 <Link to="/register">Sign Up</Link>
               </>
             )}
-            {userInfo && userInfo.isAdmin && (
-              <div className="dropdown">
-                <Link to="#admin">
-                  Admin <i className="fa fa-caret-down"></i>
-                </Link>
-                <ul className="dropdown-content">
-                  <li>
-                    <Link to="/dashboard">Dashboard</Link>
-                  </li>
-                  <li>
-                    <Link to="/productlist">Products</Link>
-                  </li>
-                  <li>
-                    <Link to="/orderlist">Orders</Link>
-                  </li>
-                  <li>
-                    <Link to="/userlist">Users</Link>
-                  </li>
-                </ul>
-              </div>
-            )}
+              {userInfo && userInfo.isSeller && (
+                <div className="dropdown">
+                  <Link to="#admin">
+                    Seller <i className="fa fa-caret-down"></i>
+                  </Link>
+                  <ul className="dropdown-content">
+                    <li>
+                      <Link to="/productlist/seller">Products</Link>
+                    </li>
+                    <li>
+                      <Link to="/orderlist/seller">Orders</Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
+
+              {userInfo && userInfo.isAdmin && (
+                <div className="dropdown">
+                  <Link to="#admin">
+                    Admin <i className="fa fa-caret-down"></i>
+                  </Link>
+                  <ul className="dropdown-content">
+                    <li>
+                      <Link to="/dashboard">Dashboard</Link>
+                    </li>
+                    <li>
+                      <Link to="/productlist">Products</Link>
+                    </li>
+                    <li>
+                      <Link to="/orderlist">Orders</Link>
+                    </li>
+                    <li>
+                      <Link to="/userlist">Users</Link>
+                    </li>
+                  </ul>
+                </div>
+              )}
           </div>
         </header>
         <main>
@@ -104,21 +122,32 @@ function App() {
             exact
           ></Route>
           
+          <SellerRoute
+            path="/productlist/seller"
+            component={ ProductListScreen }
+          ></SellerRoute>
+          <SellerRoute
+            path="/orderlist/seller"
+            component={ OrderListScreen }
+          ></SellerRoute>
           <AdminRoute
             path="/user/:_id/edit"
             component={ UserEditScreen }
           ></AdminRoute>
           <AdminRoute
             path="/orderlist"
+            exact
             component={ OrderListScreen }
           ></AdminRoute>
           <AdminRoute 
             path="/userlist" 
             component={ UserListScreen }
+            exact
           ></AdminRoute>
           <AdminRoute
             path="/productlist"
             component={ ProductListScreen }
+            exact
           ></AdminRoute>
           
           <PrivateRoute
@@ -136,7 +165,8 @@ function App() {
           <Route path="/orderhistory" component={ OrderHistoryScreen }></Route>
           {/* <Route path="/profile" component={ ProfileScreen }></Route> */}
           <Route path="/order/:_id" component={ OrderScreen }></Route>
-          <Route path="/cart/:_id?" component={ CartScreen }></Route>         
+          <Route path="/cart/:_id?" component={ CartScreen }></Route>
+          <Route path="/seller/:_id" component={SellerScreen}></Route>
         </main>
         <footer className="row center">All right reserved</footer>
       </div>

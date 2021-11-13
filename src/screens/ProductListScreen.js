@@ -13,9 +13,13 @@ import {
 } from '../constants/productConstants'
 
 function ProductListScreen(props) {
+     const sellerMode = props.match.path.indexOf('/seller') >= 0
      const productList = useSelector((state) => state.productList)
      const { loading, error, products } = productList
-     
+     console.log('products ', products)
+     const userSignin = useSelector((state) => state.userSignin)
+     const { userInfo } = userSignin
+
      const productCreate = useSelector((state) => state.productCreate)
      const {
           loading: loadingCreate,
@@ -45,8 +49,16 @@ function ProductListScreen(props) {
                })
           }
 
-          dispatch(listProducts())
-     }, [createdProduct, dispatch, props.history, successCreate, successDelete])
+          dispatch(listProducts({ seller: sellerMode ? userInfo._id : '' }))
+          }, [
+               dispatch,
+               createdProduct,
+               props.history,
+               sellerMode,
+               successCreate,
+               successDelete,
+               userInfo._id,
+     ])
 
      const deleteHandler = (product) => {
           if (window.confirm('Are you sure to delete?')) {

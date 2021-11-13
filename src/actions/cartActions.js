@@ -8,7 +8,7 @@ import {
 
 export const addToCart = (productId, qty) => async (dispatch, getState) => {
      const { data } = await Axios.get(`/api/products/${productId}`)
-     // console.log('dataCart ', data);
+     console.log('dataCart ', data);
      dispatch({
           type: CART_ADD_ITEM,
           payload: {
@@ -17,9 +17,9 @@ export const addToCart = (productId, qty) => async (dispatch, getState) => {
                price: data.product.price,
                countInStock: data.product.countInStock,
                product: data.product._id,
+               seller: data.product.seller,
                qty
-          },
-
+          }
      })
      
      localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems));

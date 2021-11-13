@@ -17,13 +17,13 @@ function HomeScreen() {
     const { loading, error, products } = productList
 
     // console.log('products ', products);
- 
+
     useEffect(() => {
         /* implement before using redux */
         // const fetchData = async () => {
         //   try {
         //     setLoading(true)
-  
+
         //     const { data } = await axios.get('/api/products')
         //     setLoading(false)
         //     setProducts(data.data.products)
@@ -37,7 +37,7 @@ function HomeScreen() {
         // fetchData()
 
         /* implement after using redux */
-        dispatch(listProducts())
+        dispatch(listProducts({}))
     }, [dispatch])
 
     return (
