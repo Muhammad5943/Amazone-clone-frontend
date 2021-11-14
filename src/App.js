@@ -24,6 +24,7 @@ import ProductEditScreen from './screens/ProductEditScreen'
 import OrderHistoryScreen from './screens/OrderHistoryScreen'
 import PaymentMethodScreen from './screens/PaymentMethodScreen'
 import ShippingAddressScreen from './screens/ShippingAddressScreen'
+import MapScreen from './screens/MapScreen'
 import { listProductCategories } from './actions/productActions'
 import LoadingBox from './components/LoadingBox'
 import MessageBox from './components/MessageBox'
@@ -211,6 +212,10 @@ function App() {
             exact
           ></AdminRoute>
           
+          <PrivateRoute 
+            path="/map" 
+            component={MapScreen}
+          ></PrivateRoute>
           <PrivateRoute
             path="/profile"
             component={ ProfileScreen }

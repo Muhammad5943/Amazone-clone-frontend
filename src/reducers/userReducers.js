@@ -27,7 +27,8 @@ import {
      USER_UPDATE_REQUEST,
      USER_UPDATE_FAIL, 
      USER_UPDATE_RESET,
-     USER_UPDATE_SUCCESS
+     USER_UPDATE_SUCCESS,
+     USER_ADDRESS_MAP_CONFIRM
 } from "../constants/userConstants"
 
 export const userRegisterReducer = (
@@ -50,7 +51,7 @@ export const userRegisterReducer = (
                     error: action.payload
                }
           default:
-               return state;
+               return state
      }
 }
 
@@ -109,7 +110,7 @@ export const userDetailsReducer = (
                     loading: true 
                }
           default:
-               return state;
+               return state
      }
 }
 
@@ -133,9 +134,9 @@ export const userUpdateProfileReducer = (
                     error: action.payload 
                }
           case USER_UPDATE_PROFILE_RESET:
-               return {};
+               return {}
           default:
-               return state;
+               return state
      }
 }
 
@@ -232,6 +233,17 @@ export const userTopSellerListReducer = (state = { loading: true }, action) => {
                return { 
                     loading: false, 
                     error: action.payload 
+               }
+          default:
+               return state
+     }
+}
+
+export const userAddressMapReducer = (state = {}, action) => {
+     switch (action.type) {
+          case USER_ADDRESS_MAP_CONFIRM:
+               return { 
+                    address: action.payload 
                }
           default:
                return state
