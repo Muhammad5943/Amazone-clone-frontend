@@ -8,7 +8,7 @@ import Product from '../components/Product'
 import Rating from '../components/Rating'
 
 export default function SellerScreen(props) {
-     const sellerId = props.match.params.id
+     const sellerId = props.match.params._id
      const userDetails = useSelector((state) => state.userDetails)
      const { loading, error, user } = userDetails
 

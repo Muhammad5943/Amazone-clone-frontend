@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { 
@@ -12,7 +13,7 @@ export default function OrderListScreen(props) {
      const sellerMode = props.match.path.indexOf('/seller') >= 0
      const orderList = useSelector((state) => state.orderList)
      const { loading, error, orders } = orderList
-     // console.log('orders seller', orders)
+     console.log('orders seller', orders)
      const orderDelete = useSelector((state) => state.orderDelete)
      const {
           loading: loadingDelete,
@@ -60,7 +61,7 @@ export default function OrderListScreen(props) {
                               </tr>
                          </thead>
                          <tbody>
-                         {orders.orders.map((order) => (
+                         {/* {orders.map((order) => (
                               <tr key={order._id}>
                                    <td>{order._id}</td>
                                    <td>{order.user.name}</td>
@@ -92,7 +93,7 @@ export default function OrderListScreen(props) {
                                         </button>
                                    </td>
                               </tr>
-                         ))}
+                         ))} */}
                          </tbody>
                     </table>
                )}

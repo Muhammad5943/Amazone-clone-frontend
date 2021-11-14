@@ -17,8 +17,6 @@ function ProductListScreen(props) {
      const productList = useSelector((state) => state.productList)
      const { loading, error, products } = productList
      console.log('products ', products)
-     const userSignin = useSelector((state) => state.userSignin)
-     const { userInfo } = userSignin
 
      const productCreate = useSelector((state) => state.productCreate)
      const {
@@ -35,10 +33,12 @@ function ProductListScreen(props) {
           success: successDelete,
      } = productDelete
 
+     const userSignin = useSelector((state) => state.userSignin)
+     const { userInfo } = userSignin
      const dispatch = useDispatch()
      useEffect(() => {
           if (successCreate) {
-               dispatch({ 
+               dispatch({
                     type: PRODUCT_CREATE_RESET
                })
                props.history.push(`/product/${createdProduct._id}/edit`)

@@ -4,7 +4,7 @@ import Rating from './Rating'
 
 function Product(props) {
      const { product } = props
-     console.log('product sellerId', product);
+     // console.log('product sellerId', product.seller._id);
 
      return (
           <div key={product._id} className="card">
@@ -22,9 +22,9 @@ function Product(props) {
                     <div className="row">
                          <div className="price">${product.price}</div>
                          <div>
-                              <Link to={`/seller/${product.seller._id}`}>
-                                   {product.seller.seller.name}
-                              </Link>
+                              {/* <Link to={`/seller/${product.seller._id}`}>
+                                   {product.seller}
+                              </Link> */}
                          </div>
                     </div>
                </div>
