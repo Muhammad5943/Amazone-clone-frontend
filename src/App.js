@@ -223,6 +223,12 @@ function App() {
           <Route path="/placeholder" component={ PlaceOrderScreen }></Route>
           <Route path="/product/:_id" component={ ProductScreen } exact></Route>
           <Route path="/product/:_id/edit" component={ ProductEditScreen } exact></Route>
+          
+          <Route
+            path="/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order"
+            component={SearchScreen}
+            exact
+          ></Route>
           <Route
             path="/search/category/:category/name/:name"
             component={SearchScreen}
@@ -233,6 +239,7 @@ function App() {
             component={SearchScreen}
             exact
           ></Route>
+          
           <Route path="/search/name/:name?" component={ SearchScreen } exact></Route>
           <Route path="/orderhistory" component={ OrderHistoryScreen }></Route>
           {/* <Route path="/profile" component={ ProfileScreen }></Route> */}

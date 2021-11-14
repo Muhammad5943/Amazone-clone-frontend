@@ -334,3 +334,7 @@ img.large {
   border-right: none;
   margin-left: 0.5rem;
 }
+/* Rating */
+.active {
+  font-weight: bold;
+}
